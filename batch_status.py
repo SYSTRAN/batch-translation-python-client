@@ -11,8 +11,8 @@ import urllib3.contrib.pyopenssl
 urllib3.contrib.pyopenssl.inject_into_urllib3()
 
 # import translation-api-python-client (version >= 1.0.0) and gateway version >= 0.0.27
-import systranTranslationApi
-import systranTranslationApi.configuration
+import systran_translation_api
+import systran_translation_api.configuration
 
 parser = argparse.ArgumentParser(description="give a summary of a batch status")
 parser.add_argument("-k", "--keyfile" , required=True, help="API key file")
@@ -21,8 +21,8 @@ parser.add_argument("-i", "--id" , required=True, help="batch id")
 args = parser.parse_args()
 
 api_key_file = os.path.realpath(args.keyfile)
-systranTranslationApi.configuration.load_api_key(api_key_file)
-translation_api = systranTranslationApi.TranslationApi(systranTranslationApi.ApiClient())
+systran_translation_api.configuration.load_api_key(api_key_file)
+translation_api = systran_translation_api.TranslationApi(systran_translation_api.ApiClient())
 
 summary = {"pending":0, "finished":0, "error":0, "cancelled":0}
 batch_status = translation_api.translation_file_batch_status_get(batch_id=args.id)

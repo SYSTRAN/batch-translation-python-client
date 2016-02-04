@@ -12,9 +12,9 @@ import mimetypes
 import urllib3.contrib.pyopenssl
 urllib3.contrib.pyopenssl.inject_into_urllib3()
 
-# import translation-api-python-client (version >= 1.0.0) and gateway version >= 0.0.27
-import systranTranslationApi
-import systranTranslationApi.configuration
+# import translation-api-python-client (version >= 1.0.1) and gateway version >= 0.0.27
+import systran_translation_api
+import systran_translation_api.configuration
 
 parser = argparse.ArgumentParser(description="a script to translate all files of a directory")
 parser.add_argument("-k", "--keyfile" , required=True, help="API key file")
@@ -41,8 +41,8 @@ if inputDir == outputDir:
     sys.exit("input and output directories must be different")
 
 api_key_file = os.path.realpath(args.keyfile)
-systranTranslationApi.configuration.load_api_key(api_key_file)
-translation_api = systranTranslationApi.TranslationApi(systranTranslationApi.ApiClient())
+systran_translation_api.configuration.load_api_key(api_key_file)
+translation_api = systran_translation_api.TranslationApi(systran_translation_api.ApiClient())
 
 # create a batch to do some translations
 try:
